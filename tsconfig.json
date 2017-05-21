@@ -1,0 +1,15 @@
+{
+    "exclude": [
+        "node_modules"
+    ],
+    "compilerOptions": {
+        "sourceMap": true,
+        "outDir": "./dist/",
+        "types": [
+            "node"
+        ]
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}

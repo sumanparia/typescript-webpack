@@ -1,9 +1,12 @@
 import * as webpack from 'webpack';
+import * as HtmlWebpackPlugin from 'html-webpack-plugin'
 
 const config: webpack.Configuration = {
-    entry: "./src/index.ts",
+    entry: {
+        "main" : "./src/index.ts"
+    },
     output: {
-        filename: "bundle.js",
+        filename: "[name].js",
         path: __dirname + "/dist"
     },
 
@@ -21,6 +24,13 @@ const config: webpack.Configuration = {
             { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
         ]
     },
+
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'index.html'
+        })
+    ]
 };
 
 export default config;

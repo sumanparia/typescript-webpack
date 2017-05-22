@@ -1,4 +1,6 @@
 import msg from './Message'
-window.onload  = () =>  {
+import * as $ from 'jquery';
+
+$(function() {
     new msg().show();
-}
+});

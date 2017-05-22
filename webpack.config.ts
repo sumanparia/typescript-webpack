@@ -1,9 +1,11 @@
 import * as webpack from 'webpack';
-import * as HtmlWebpackPlugin from 'html-webpack-plugin'
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+import * as CleanWebpackPlugin from 'clean-webpack-plugin';
 
 const config: webpack.Configuration = {
     entry: {
-        "main" : "./src/index.ts"
+        "main" : ["./src/index.ts"],
+        "vendor" : ["./vendor/jquery/3.2.1/jquery.min.js"]
     },
     output: {
         filename: "[name].js",
@@ -29,7 +31,8 @@ const config: webpack.Configuration = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'index.html'
-        })
+        }),
+        new CleanWebpackPlugin(['dist'])
     ]
 };
 

@@ -8,8 +8,8 @@ const bootstrapCSS = new ExtractTextPlugin('bootstrap.css');
 const config: webpack.Configuration = {
     entry: {
         "main": ["./src/index.ts"],
-        "vendor": ["./vendor/jquery/3.2.1/jquery.min.js"],
-        'bootstrap' : './vendor/bootstrap/4.0.0/scss/bootstrap.scss'
+        "vendor": ["./vendor/jquery/3.2.1/jquery.min.js"]
+        //'bootstrap' : './vendor/bootstrap/4.0.0/scss/bootstrap.scss'
     },
     output: {
         filename: "[name].js",

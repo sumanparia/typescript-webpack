@@ -2,7 +2,6 @@ import * as webpack from 'webpack';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as CleanWebpackPlugin from 'clean-webpack-plugin';
 import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
-//import './node_modules/bootstrap/scss/bootstrap.scss';
 
 const path = require('path');
 const bootstrapCSS = new ExtractTextPlugin('bootstrap.css');
@@ -10,7 +9,7 @@ const config: webpack.Configuration = {
     entry: {
         "main": ["./src/index.ts"],
         "vendor": [
-            "./node_modules/jquery/dist/jquery.min.js",
+            "jquery",
             "./node_modules/tether/dist/js/tether.min.js",
             "./node_modules/bootstrap/dist/js/bootstrap.min.js"
         ]
@@ -67,6 +66,9 @@ const config: webpack.Configuration = {
             "window.jQuery": "jquery",
             Tether: "tether",
             "window.Tether": "tether"
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            names: ['vendor']
         })
     ]
 };

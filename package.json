@@ -28,7 +28,8 @@
     "tether": "^1.4.0",
     "ts-node": "^3.0.2",
     "typescript": "^2.3.2",
-    "webpack": "^2.5.1"
+    "webpack": "^2.5.1",
+    "webpack-vendor-chunk-plugin": "^1.0.0"
   },
   "dependencies": {}
 }

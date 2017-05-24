@@ -1,11 +1,15 @@
 import * as webpack from 'webpack';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as CleanWebpackPlugin from 'clean-webpack-plugin';
+import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
 
+const path = require('path');
+const bootstrapCSS = new ExtractTextPlugin('bootstrap.css');
 const config: webpack.Configuration = {
     entry: {
-        "main" : ["./src/index.ts"],
-        "vendor" : ["./vendor/jquery/3.2.1/jquery.min.js"]
+        "main": ["./src/index.ts"],
+        "vendor": ["./vendor/jquery/3.2.1/jquery.min.js"],
+        'bootstrap' : './vendor/bootstrap/4.0.0/scss/bootstrap.scss'
     },
     output: {
         filename: "[name].js",
@@ -21,18 +25,38 @@ const config: webpack.Configuration = {
     },
 
     module: {
-        loaders: [
-            // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-            { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+        rules: [
+            {
+                test: /\.tsx?$/,
+                use: [
+                    'awesome-typescript-loader'
+                ]
+            }, {
+                test: /\.scss$/,
+                exclude: path.resolve(__dirname, "src"),
+                use: bootstrapCSS.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'sass-loader']
+                })
+            }, {
+                test: /\.scss$/,
+                exclude: path.resolve(__dirname, "vendor"),
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
+            }
         ]
     },
 
     plugins: [
+        new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'index.html'
         }),
-        new CleanWebpackPlugin(['dist'])
+        bootstrapCSS
     ]
 };
 

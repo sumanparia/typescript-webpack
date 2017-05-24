@@ -10,8 +10,8 @@ const config: webpack.Configuration = {
         "main": ["./src/index.ts"],
         "vendor": [
             "jquery",
-            "./node_modules/tether/dist/js/tether.min.js",
-            "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            "tether",
+            "bootstrap"
         ]
     },
     output: {

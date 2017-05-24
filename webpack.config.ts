@@ -2,14 +2,18 @@ import * as webpack from 'webpack';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as CleanWebpackPlugin from 'clean-webpack-plugin';
 import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
+//import './node_modules/bootstrap/scss/bootstrap.scss';
 
 const path = require('path');
 const bootstrapCSS = new ExtractTextPlugin('bootstrap.css');
 const config: webpack.Configuration = {
     entry: {
         "main": ["./src/index.ts"],
-        "vendor": ["./vendor/jquery/3.2.1/jquery.min.js"]
-        //'bootstrap' : './vendor/bootstrap/4.0.0/scss/bootstrap.scss'
+        "vendor": [
+            "./node_modules/jquery/dist/jquery.min.js",
+            "./node_modules/tether/dist/js/tether.min.js",
+            "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+        ]
     },
     output: {
         filename: "[name].js",
@@ -33,14 +37,14 @@ const config: webpack.Configuration = {
                 ]
             }, {
                 test: /\.scss$/,
-                exclude: path.resolve(__dirname, "src"),
+                include: path.resolve(__dirname, "node_modules/bootstrap"),
                 use: bootstrapCSS.extract({
                     fallback: 'style-loader',
                     use: ['css-loader', 'sass-loader']
                 })
             }, {
                 test: /\.scss$/,
-                exclude: path.resolve(__dirname, "vendor"),
+                include: path.resolve(__dirname, "src"),
                 use: [
                     'style-loader',
                     'css-loader',
@@ -56,7 +60,14 @@ const config: webpack.Configuration = {
             filename: 'index.html',
             template: 'index.html'
         }),
-        bootstrapCSS
+        bootstrapCSS,
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery",
+            Tether: "tether",
+            "window.Tether": "tether"
+        })
     ]
 };
 

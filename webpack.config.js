@@ -1,11 +1,12 @@
-import * as webpack from 'webpack';
-import * as HtmlWebpackPlugin from 'html-webpack-plugin';
-import * as CleanWebpackPlugin from 'clean-webpack-plugin';
-import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
-
+const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 const bootstrapCSS = new ExtractTextPlugin('bootstrap.css');
-const config: webpack.Configuration = {
+
+let config = {
     entry: {
         "main": ["./src/index.ts"],
         "vendor": [
@@ -73,4 +74,6 @@ const config: webpack.Configuration = {
     ]
 };
 
-export default config;
+module.exports = function() {
+    return config;
+};

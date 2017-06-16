@@ -10,24 +10,25 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    // Jquery
+
     "@types/jquery": "^2.0.45",
     "jquery": "^3.2.1",
-    // Typescript
+    
     "typescript": "^2.3.2",
     "ts-node": "^3.0.2",
     "awesome-typescript-loader": "^3.1.3",
-    // Bootstrap
+    
     "bootstrap": "^4.0.0-alpha.6",
     "tether": "^1.4.0",
-    // Css sass
+    
     "style-loader": "^0.18.1",
     "css-loader": "^0.28.2",
     "sass-loader": "^6.0.5",
     "node-sass": "^4.5.3",    
-    // Webpack
+    
     "webpack": "^2.5.1",
     "source-map-loader": "^0.1.6",
+    "copy-webpack-plugin": "^4.0.1",
     "webpack-vendor-chunk-plugin": "^1.0.0",
     "clean-webpack-plugin": "^0.1.16",
     "extract-text-webpack-plugin": "^2.1.0",

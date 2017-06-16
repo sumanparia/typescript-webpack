@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const bootstrapCSS = new ExtractTextPlugin('bootstrap.css');
 
@@ -70,10 +71,13 @@ let config = {
         }),
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor']
-        })
+        }),
+        new CopyWebpackPlugin([
+            { from: 'favicon.ico' }
+        ])
     ]
 };
 
-module.exports = function() {
+module.exports = function () {
     return config;
 };

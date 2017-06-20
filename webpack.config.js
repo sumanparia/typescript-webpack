@@ -55,6 +55,11 @@ let config = {
         ]
     },
 
+    devServer: {
+        contentBase: __dirname + "/dist",
+        port: 9000
+    },
+
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({

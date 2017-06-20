@@ -14,7 +14,8 @@ let config = {
             "jquery",
             "tether",
             "bootstrap"
-        ]
+        ],
+        "polyfills": ["./src/polyfills.browser.ts"]
     },
     output: {
         filename: "[name].js",

@@ -41,8 +41,6 @@ let config = {
                 include: path.resolve(__dirname, "src"),
                 use: [
                     'raw-loader',
-                    /*'style-loader',
-                    'css-loader',*/
                     'sass-loader'
                 ]
             }

@@ -1,8 +1,10 @@
-import msg from './Message'
-import * as $ from 'jquery';
-import './index.scss';
-import '../node_modules/bootstrap/scss/bootstrap.scss';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { enableProdMode } from '@angular/core';
 
-$(function() {
-    new msg().show();
-});
+import { AppModule } from './app.module';
+
+if (process.env.ENV === 'production') {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule);

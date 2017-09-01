@@ -2,19 +2,12 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-
-const bootstrapCSS = new ExtractTextPlugin('bootstrap.css');
 
 let config = {
     entry: {
         "main": ["./src/index.ts"],
-        "vendor": [
-            "jquery",
-            "tether",
-            "bootstrap"
-        ],
+        "vendor": ['./src/vendor.ts'],
         "polyfills": ["./src/polyfills.browser.ts"]
     },
     output: {
@@ -34,22 +27,22 @@ let config = {
         rules: [
             {
                 test: /\.tsx?$/,
-                use: [
-                    'awesome-typescript-loader'
-                ]
+                loaders: [
+                    'awesome-typescript-loader',
+                    'angular2-template-loader'
+                ],
+                exclude: [/\.(spec|e2e)\.ts$/]
             }, {
-                test: /\.scss$/,
-                include: path.resolve(__dirname, "node_modules/bootstrap"),
-                use: bootstrapCSS.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader', 'sass-loader']
-                })
+                test: /\.html$/,
+                loader: 'html-loader'
+        
             }, {
                 test: /\.scss$/,
                 include: path.resolve(__dirname, "src"),
                 use: [
-                    'style-loader',
-                    'css-loader',
+                    'raw-loader',
+                    /*'style-loader',
+                    'css-loader',*/
                     'sass-loader'
                 ]
             }
@@ -66,14 +59,6 @@ let config = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'index.html'
-        }),
-        bootstrapCSS,
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
-            "window.jQuery": "jquery",
-            Tether: "tether",
-            "window.Tether": "tether"
         }),
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor']

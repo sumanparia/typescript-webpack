@@ -3,10 +3,13 @@
         "node_modules"
     ],
     "compilerOptions": {
+        "target": "es5",
+        "lib": ["es5", "es6", "dom"],
+        "experimentalDecorators": true,
         "sourceMap": true,
         "outDir": "./dist/",
         "types": [
-            "jquery"
+            "node"
         ]
     },
     "include": [

@@ -2,7 +2,11 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+
+const bootstrapCSS = new ExtractTextPlugin('company-project-bootstrap.css');
 
 let config = {
     entry: {
@@ -35,9 +39,31 @@ let config = {
             }, {
                 test: /\.html$/,
                 loader: 'html-loader'
-        
+
             }, {
                 test: /\.scss$/,
+                include: path.resolve(__dirname, "src/assets/scss/bootstrap/bootstrap-custom.scss"),
+                use: bootstrapCSS.extract({
+                    use: [
+                        {
+                            loader: 'css-loader'
+                        }, {
+                            loader: 'postcss-loader',
+                            options: {
+                                plugins: function () {
+                                    return [
+                                        require('autoprefixer')
+                                    ];
+                                }
+                            }
+                        }, {
+                            loader: 'sass-loader'
+                        }
+                    ]
+                })
+            }, {
+                test: /\.scss$/,
+                exclude: [path.resolve(__dirname, "src/assets/scss/bootstrap/bootstrap-custom.scss")],
                 include: path.resolve(__dirname, "src"),
                 use: [
                     'raw-loader',
@@ -58,6 +84,7 @@ let config = {
             filename: 'index.html',
             template: 'index.html'
         }),
+        bootstrapCSS,
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor']
         }),

@@ -1,4 +1,46 @@
 // Override the variables
-
+$enable-rounded: false;
+$enable-shadows: false;
 // Importing bootstrap
 @import "~bootstrap/scss/bootstrap";
+
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+body {
+    padding-top: 3.5rem;
+}
+
+.main-header {
+    margin-bottom: 20px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #eee;
+}
+
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 20px 0 20px 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
+    border-right: 1px solid #eee;
+    .nav {
+        margin-bottom: 20px;
+    }
+    
+    .nav-item {
+        width: 100%;
+    }
+    
+    .nav-item+.nav-item {
+        margin-left: 0;
+    }
+    
+    .nav-link {
+        border-radius: 0;
+    }
+}
+
+

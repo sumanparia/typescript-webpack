@@ -5,7 +5,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-
 const bootstrapCSS = new ExtractTextPlugin('company-project-bootstrap.css');
 
 let config = {

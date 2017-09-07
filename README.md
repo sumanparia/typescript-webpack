@@ -12,10 +12,10 @@
 6.  Angular Flex Layout (https://github.com/angular/flex-layout) is slow. Better to go with pure css. Bootstrap or Bulma(bulma.io).
 7.  https://getbootstrap.com/docs/4.0/getting-started/webpack/ is a good doc to add bootstrap with webpack.
 8.  Adding bootstrap as global head css.
-
+9.  Angular 2 routing added. If you want to bookmark angular routing then use useHash.
+10. 
 
 ## TODO
-1.  Remove bootstrap from index.ts
-2.  Hot building
-3.  Add angular2
-
+1. Make it ready for production
+2. Index.html load performance.
+3. 

@@ -30,6 +30,14 @@ let config = {
                     'awesome-typescript-loader'
                 ],
                 exclude: [/\.(spec|e2e)\.ts$/]
+            }, {
+                test: /\.scss$/,
+                include: path.resolve(__dirname, "src"),
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
             }
         ]
     },

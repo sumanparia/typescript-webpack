@@ -12,7 +12,5 @@
 
 
 ## TODO
-1.  Remove bootstrap from index.ts
-2.  Hot building
-3.  Add angular2
+
 

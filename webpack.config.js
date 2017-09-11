@@ -6,9 +6,8 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 let config = {
     entry: {
-        "main": ["./src/index.ts"],
-        "vendor": ['./src/vendor.ts'],
-        "polyfills": ["./src/polyfills.browser.ts"]
+        "main": ["./src/index.tsx"],
+        "vendor": ['./src/vendor.ts']
     },
     output: {
         filename: "[name].js",
@@ -28,23 +27,9 @@ let config = {
             {
                 test: /\.tsx?$/,
                 loaders: [
-                    'awesome-typescript-loader',
-                    'angular2-template-loader'
+                    'awesome-typescript-loader'
                 ],
                 exclude: [/\.(spec|e2e)\.ts$/]
-            }, {
-                test: /\.html$/,
-                loader: 'html-loader'
-        
-            }, {
-                test: /\.scss$/,
-                include: path.resolve(__dirname, "src"),
-                use: [
-                    'raw-loader',
-                    /*'style-loader',
-                    'css-loader',*/
-                    'sass-loader'
-                ]
             }
         ]
     },

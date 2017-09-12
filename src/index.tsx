@@ -1,9 +1,14 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Hello } from "./components/Hello";
+import { OneDiv } from "./components/OneDiv";
 
 ReactDOM.render(
-    <Hello compiler="TypeScript" framework="React" />,
+    <div className="container">
+    <OneDiv><OneDiv /><OneDiv /></OneDiv>
+    <OneDiv><OneDiv /><OneDiv /></OneDiv>
+    
+    <OneDiv /><OneDiv />
+    </div>,
     document.getElementById("example")
 );

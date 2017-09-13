@@ -1,10 +1,22 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { enableProdMode } from '@angular/core';
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
-import { AppModule } from './app.module';
+import './sass/main.scss';
 
-if (process.env.ENV === 'production') {
-  enableProdMode();
-}
+import { HomeComponent } from './components/home';
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+// register the plugin
+Vue.use(VueRouter);
+
+let router = new VueRouter({
+  routes: [
+    { path: '/', component: HomeComponent }
+  ]
+});
+
+new Vue({
+  el: '#main-container',
+  router: router,
+  components: {
+  }
+});

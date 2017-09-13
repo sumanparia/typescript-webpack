@@ -20,7 +20,10 @@ let config = {
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js',
+        }
     },
 
     module: {
@@ -28,19 +31,19 @@ let config = {
             {
                 test: /\.tsx?$/,
                 loaders: [
-                    'awesome-typescript-loader',
-                    'angular2-template-loader'
+                    'awesome-typescript-loader'
                 ],
                 exclude: [/\.(spec|e2e)\.ts$/]
             }, {
                 test: /\.html$/,
-                loader: 'html-loader'
-        
+                loader: 'raw-loader',
+                include: path.resolve(__dirname, "src"),
             }, {
                 test: /\.scss$/,
                 include: path.resolve(__dirname, "src"),
                 use: [
-                    'raw-loader',
+                    'style-loader',
+                    'css-loader',
                     'sass-loader'
                 ]
             }
@@ -59,7 +62,10 @@ let config = {
             template: 'index.html'
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            names: ['vendor']
+            names: ['vendor'],
+            minChunks: function (module) {
+                return module.context && module.context.indexOf('node_modules') !== -1;
+            }
         }),
         new CopyWebpackPlugin([
             { from: 'favicon.ico' }

@@ -4,7 +4,8 @@
     ],
     "compilerOptions": {
         "target": "es5",
-        "lib": ["es5", "es6", "dom"],
+        "allowSyntheticDefaultImports": true,
+        "lib": ["es5", "es6", "dom", "es2015.promise"],
         "experimentalDecorators": true,
         "sourceMap": true,
         "outDir": "./dist/",

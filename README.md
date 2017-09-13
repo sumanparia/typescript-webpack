@@ -9,10 +9,9 @@
 3.  CleanWebpackPlugin  :   Used to delete old dist folder before build.
 4.  ProvidePlugin       :   Used to provide global variable for jquery and tether(used by bootstrap 4).
 5.  CopyWebpackPlugin   :   Used to copy resources from one place to another.
+6.  VUE js is all about components.
 
 
 ## TODO
-1.  Remove bootstrap from index.ts
-2.  Hot building
-3.  Add angular2
+1.  Adding vue material UI
 

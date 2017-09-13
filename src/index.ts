@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 
 import './sass/main.scss';
 
-import { HomeComponent } from './components/home';
+import { HomeComponent } from './components/home/home';
 
 // register the plugin
 Vue.use(VueRouter);

@@ -6,8 +6,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 let config = {
     entry: {
-        "main": ["./src/index.tsx"],
-        "vendor": ['./src/vendor.ts']
+        "main": ["./src/index.tsx"]
     },
     output: {
         filename: "[name].js",
@@ -54,7 +53,8 @@ let config = {
             template: 'index.html'
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            names: ['vendor']
+            name: 'vendor',
+            minChunks: module => module.context && module.context.indexOf('node_modules') !== -1
         }),
         new CopyWebpackPlugin([
             { from: 'favicon.ico' }

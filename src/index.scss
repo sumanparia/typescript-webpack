@@ -1,5 +1,11 @@
+
 @import './assets/scss/bootstrap/bootstrap-custom';
+
 .starter-template {
-    padding: 3rem 1.5rem;
-    text-align: center;
+    padding-top: 3.5rem;
+}
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
 }

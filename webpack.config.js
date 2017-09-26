@@ -26,7 +26,7 @@ let config = {
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".html"]
     },
 
     module: {
@@ -80,7 +80,8 @@ let config = {
             minChunks: module => module.context && module.context.indexOf('node_modules') !== -1
         }),
         new CopyWebpackPlugin([
-            { from: 'favicon.ico' }
+            { from: 'favicon.ico' },
+            { from: 'src/assets/images/**' },
         ])
     ]
 };
